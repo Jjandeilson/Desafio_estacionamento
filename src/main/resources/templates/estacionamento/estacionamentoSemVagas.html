@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+
+	<title>Vagas do estacionamento</title>
+	<meta charset="utf8">
+	
+	<link type="text/css" rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+	<link type="text/css" rel="stylesheet" href="bootstrap/css/estilo.css"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+</head>
+<body>
+	
+	<header>
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			 <ul class="navbar-nav">
+			      <li class="nav-item">
+			        <a class="nav-link" href="/index">Home<span class="sr-only">(current)</span></a>
+			      </li>
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Estacionamento
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a class="dropdown-item" href="/vagas/abertas">Vagas abertas</a>
+			          <a class="dropdown-item" href="/vagas/fechadas">Vagas ocupadas</a>
+			          <a class="dropdown-item" href="/estacionar/veiculo">Estacionar veiculo</a>
+			        </div>
+			      </li>
+			       <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Veiculo
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a class="dropdown-item" href="/veiculos">Cadastrar</a>
+			          <a class="dropdown-item" href="/veiculos/cadastrados">Veiculos cadastrados</a>
+			        </div>
+			       </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="/sair">Pagamento</a>
+			      </li>
+			  </ul>
+
+			</nav>
+		</div>
+	</header>
+	
+	<h2 class="text-center">Vagas ocupadas do estacionamento</h2>
+	
+	<div class="container">
+		<table class="table table-striped table-dark">
+		  <thead>
+		    <tr>
+		      <th scope="col">Número da vaga</th>
+		      <th scope="col">Ocupada</th>
+		    </tr>
+		  </thead>
+		  <tbody th:each="estacionamento: ${estacionamentos}">
+		    <tr>
+		      <td th:text="${estacionamento.idVaga}"></td>
+		      <td th:text="${estacionamento.ocupado == true ? 'Ocupado' : 'Livre'}"></td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+</body>
+</html>

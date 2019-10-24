@@ -1,0 +1,16 @@
+insert into estacionamento (id_vaga, ocupado) values (01,false);
+insert into estacionamento (id_vaga, ocupado) values (02,false);
+insert into estacionamento (id_vaga, ocupado) values (03,false);
+insert into estacionamento (id_vaga, ocupado) values (04,false);
+insert into estacionamento (id_vaga, ocupado) values (05,false);
+insert into estacionamento (id_vaga, ocupado) values (06,false);
+insert into estacionamento (id_vaga, ocupado) values (07,false);
+insert into estacionamento (id_vaga, ocupado) values (08,false);
+insert into estacionamento (id_vaga, ocupado) values (09,false);
+insert into estacionamento (id_vaga, ocupado) values (10,false);
+insert into estacionamento (id_vaga, ocupado) values (11,false);
+insert into estacionamento (id_vaga, ocupado) values (12,false);
+insert into estacionamento (id_vaga, ocupado) values (13,false);
+insert into estacionamento (id_vaga, ocupado) values (14,false);
+insert into estacionamento (id_vaga, ocupado) values (15,false);
+insert into estacionamento (id_vaga, ocupado) values (16,false);

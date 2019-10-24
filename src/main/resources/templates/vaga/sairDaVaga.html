@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+
+	<title>Estacionar veiculo</title>
+	<meta charset="utf8">
+	
+	<link type="text/css" rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+	<link type="text/css" rel="stylesheet" href="bootstrap/css/estilo.css"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+</head>
+<body>
+	
+	<header>
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			 <ul class="navbar-nav">
+			      <li class="nav-item">
+			        <a class="nav-link" href="/index">Home<span class="sr-only">(current)</span></a>
+			      </li>
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Estacionamento
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a class="dropdown-item" href="/vagas/abertas">Vagas abertas</a>
+			          <a class="dropdown-item" href="/vagas/fechadas">Vagas ocupadas</a>
+			          <a class="dropdown-item" href="/estacionar/veiculo">Estacionar veiculo</a>
+			        </div>
+			      </li>
+			       <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Veiculo
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a class="dropdown-item" href="/veiculos">Cadastrar</a>
+			          <a class="dropdown-item" href="/veiculos/cadastrados">Veiculos cadastrados</a>
+			        </div>
+			       </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="/sair">Pagamento</a>
+			      </li>
+			  </ul>
+				  
+			</nav>
+		</div>
+	</header>
+		
+	<h2 class="text-center">Finaliza vaga</h2>
+	
+	<div class=" container">
+		<span class="text-success" th:text="${#strings.isEmpty(menssagem)} ? '' : ${menssagem}"></span>
+	</div>
+		
+    <form class="container" th:object="${vaga}" method="post" th:action="@{/sair}">
+		<div class="col-sm-3" style="margin-left: -15px">
+	      <input type="text" class="form-control" id="placa" placeholder="Digite o número da placa" th:field="*{veiculo}">
+	    </div>
+	    <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+	</form>  
+	
+	<form class="container" th:object="${vaga}" method="post" th:action="@{/liberar}">
+	
+		<div class="form-group" hidden="true">
+		    <label for="placa">Placa do veiculo</label>
+		    <input type="text" class="form-control" id="veiculo" placeholder="Placa do veiculo" th:field="*{id}" readonly>
+		</div>
+				
+		<div class="form-group">
+		    <label for="placa">Placa do veiculo</label>
+		    <input type="text" class="form-control" id="veiculo" placeholder="Placa do veiculo" th:field="*{veiculo}" readonly>
+		</div>
+			
+		<div>
+			<label for="estacionamento">Número da vaga</label>
+			    <input type="text" class="form-control" id="estacionamento" placeholder="Número da vaga" th:field="*{estacionamento}" readonly>
+		</div>
+		
+		<div class="form-group">
+		    <label for="entrada">Entrada</label>
+		    <input type="text" class="form-control" id="horaEntrada" placeholder="Entrada no estacionamento" th:field="*{horaEntrada}" readonly>
+		</div>
+		
+		<div class="form-group">
+		    <label for="entrada">Saida</label>
+		    <input type="time" class="form-control" id="hora" placeholder="Saída do estacionamento" th:field="*{hora}">
+		</div>
+		
+		<div>
+			<button type="submit" class="btn btn-primary" style="margin-top: 5px">Finalizar</button>
+		</div>
+	</form>
+</body>
+</html>
